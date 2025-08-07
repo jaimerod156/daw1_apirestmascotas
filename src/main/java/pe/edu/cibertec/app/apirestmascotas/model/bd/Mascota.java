@@ -13,7 +13,6 @@ public class Mascota {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idmascota")
     private Integer idmascota;
 
     private String nombremascota;

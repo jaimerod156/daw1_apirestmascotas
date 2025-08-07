@@ -13,12 +13,8 @@ public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idcliente")
     private Integer idcliente;
 
-    @Column(name = "nombrecliente")
-    private String nombreclente;
-
-    @Column(name = "apellidocliente")
+    private String nombrecliente;
     private String apellidocliente;
 }

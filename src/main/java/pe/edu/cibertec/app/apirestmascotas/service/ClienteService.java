@@ -11,7 +11,7 @@ import pe.edu.cibertec.app.apirestmascotas.repository.ClienteRepository;
 
 @AllArgsConstructor
 @Service
-public class ClienteService implements IClienteService{
+public class ClienteService implements IClienteService {
     private ClienteRepository clienteRepository;
     private IMascotaService iMascotaService;
 
@@ -19,19 +19,17 @@ public class ClienteService implements IClienteService{
     @Override
     public Cliente registrarCliente(ClienteRequestDto clienteRequestDto) {
         Cliente cliente = new Cliente();
-        cliente.setNombreclente(clienteRequestDto.getNombrecliente());
+        cliente.setNombrecliente(clienteRequestDto.getNombrecliente());
         cliente.setApellidocliente(clienteRequestDto.getApellidocliente());
-
         Cliente nuevoCliente = clienteRepository.save(cliente);
         Mascota mascota;
-        for(MascotaRequestDto mascotaRequestDto: clienteRequestDto.getMascotas()){
+        for (MascotaRequestDto mascotaRequestDto: clienteRequestDto.getMascotas()){
             mascota = new Mascota();
             mascota.setNombremascota(mascotaRequestDto.getNombremascota());
             mascota.setEdad(mascotaRequestDto.getEdad());
             mascota.setCliente(nuevoCliente);
             iMascotaService.registrarMascota(mascota);
         }
-
         return nuevoCliente;
     }
 }
